@@ -23,7 +23,9 @@ O objetivo desse teste é avaliar:
 
 # Teste
 
-Você precisará criar a tela de listagem de moedas, conforme [layout](https://projects.invisionapp.com/share/U710C271P943#/screens/446014251_414px_-_Home_-_Cotac-a-o), consumindo informações do WebSocket para exibir na tela.
+Você precisará criar a tela de listagem de moedas, conforme layout abaixo, consumindo informações do WebSocket para exibir na tela.
+
+![image](https://user-images.githubusercontent.com/3410356/109640440-3e125400-7b2f-11eb-9def-0708948b0b23.png)
 
 ## Métodos para serem chamados no WebSocket
 
