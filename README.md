@@ -97,3 +97,7 @@ Exemplo de retorno
     - ```Ethereum```: InstrumentId ```4```
     - ```Litecoin```: InstrumentId ```2```
 - As imagens das moedas estão adicionadas ao projeto em ```assets/images/${InstrumentId}.png```
+
+
+
+

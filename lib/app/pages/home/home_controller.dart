@@ -9,7 +9,9 @@ class HomeController extends Controller {
   final HomePresenter presenter;
   final FoxbitWebSocket ws;
 
-  HomeController() : presenter = HomePresenter(), ws = FoxbitWebSocket() {
+  HomeController()
+      : presenter = HomePresenter(),
+        ws = FoxbitWebSocket() {
     ws.connect();
     presenter.sendHeartbeat(ws);
   }
@@ -17,7 +19,7 @@ class HomeController extends Controller {
   @override
   void onDisposed() {
     ws.disconnect();
-    
+
     super.onDisposed();
   }
 
@@ -32,12 +34,12 @@ class HomeController extends Controller {
   }
 
   void heartbeatOnError(dynamic e) {
-    (getStateKey().currentState as ScaffoldState).showSnackBar(
-      const SnackBar(
-        duration: Duration(seconds: 10),
-        content: Text('Não foi possível enviar a mensagem: [PING]')
-      )
-    );
+    // (getStateKey().currentState as ScaffoldState).showSnackBar(
+    //   const SnackBar(
+    //     duration: Duration(seconds: 10),
+    //     content: Text('Não foi possível enviar a mensagem: [PING]')
+    //   )
+    // );
 
     _scheduleNextHeartbeat();
   }
