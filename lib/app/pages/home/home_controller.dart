@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/app/pages/home/home_presenter.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
@@ -69,7 +68,7 @@ class HomeController extends Controller {
   }
 
   void _scheduleNextInstrumentId() {
-    Timer(const Duration(seconds: 30), () {
+    Timer(const Duration(seconds: 15), () {
       presenter.getInstruments(ws);
     });
   }

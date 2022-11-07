@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
 import 'package:foxbit_hiring_test_template/domain/repositories/instrument_repository.dart';
 
 class GetInstrumentIdUsecase extends CompletableUseCase<FoxbitWebSocket> {
@@ -14,7 +15,7 @@ class GetInstrumentIdUsecase extends CompletableUseCase<FoxbitWebSocket> {
     final StreamController<void> controller = StreamController<void>();
 
     try {
-      final Map _ = await _repository.getInstrumentId(params);
+      final List<InstrumentEntity> _ = await _repository.getInstrumentId(params);
 
       controller.close();
     } catch (e) {
