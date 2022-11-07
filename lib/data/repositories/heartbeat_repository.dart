@@ -7,8 +7,8 @@ class HeartbeatRepository implements IHeartbeatRepository {
   @override
   Future<Map> send(FoxbitWebSocket ws) {
     ws.send(_eventName, {});
-    
-    return ws.stream.firstWhere((message) => message['n'].toString().toUpperCase() == _eventName && message['i'] == ws.lastId);
+
+    return ws.stream.firstWhere((message) =>
+        message['n'].toString().toUpperCase() == _eventName && message['i'] == ws.lastId);
   }
-  
 }
