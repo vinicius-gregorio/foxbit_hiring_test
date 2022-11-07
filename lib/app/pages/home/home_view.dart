@@ -12,12 +12,22 @@ class HomePageState extends ViewState<HomePage, HomeController> {
 
   @override
   Widget get view => Scaffold(
-    key: globalKey,
-    appBar: AppBar(
-      title: const Text('Home Screen'),
-    ),
-    body: const Center(
-      child: Text('Olá Mundo!'),
-    ),
-  );
+        key: globalKey,
+        appBar: AppBar(
+          title: const Text('Home Screen'),
+        ),
+        body: ListView(
+          children: [
+            const Text('Home Screen'),
+            // ControlledWidgetBuilder<HomeController>(
+            //     builder: (context, controller) {
+            //       return Text(controller.counter.toString());
+            //     }
+            //   ),
+            ControlledWidgetBuilder<HomeController>(builder: (_, controller) {
+              return Text(controller.presenter.getInstrumentIdOnComplete.toString());
+            }),
+          ],
+        ),
+      );
 }
