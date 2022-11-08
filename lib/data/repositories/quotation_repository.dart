@@ -10,8 +10,7 @@ class QuotationRepository implements IQuotationRepository {
   List<InstrumentModel> resultList = [];
 
   @override
-  Future<SubscribeLevelEntity> getQuotation(
-      FoxbitWebSocket ws, GetSubscribeLevelUsecaseParams params) {
+  Future<AssetEntity> getQuotations(FoxbitWebSocket ws, GetSubscribeLevelUsecaseParams params) {
     // TODO: implement getQuotation
     throw UnimplementedError();
   }
