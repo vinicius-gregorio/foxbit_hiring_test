@@ -1,7 +1,7 @@
 class InstrumentEntity {
-  String instrumentId;
-  String symbol;
-  String sortIndex;
+  final String instrumentId;
+  final String symbol;
+  final String sortIndex;
 
   InstrumentEntity({
     this.instrumentId,
