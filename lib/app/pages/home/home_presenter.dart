@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
 import 'package:foxbit_hiring_test_template/data/repositories/heartbeat_repository.dart';
 import 'package:foxbit_hiring_test_template/data/repositories/instrument_repository.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
 import 'package:foxbit_hiring_test_template/domain/usecases/get_instrument_id_usecase.dart';
 import 'package:foxbit_hiring_test_template/domain/usecases/heartbeat_usecase.dart';
 
@@ -10,6 +13,7 @@ class HomePresenter extends Presenter {
   Function(dynamic) heartbeatOnError;
 
   Function getInstrumentIdOnComplete;
+  Function getInstrumentIdOnNext;
   Function(dynamic) getInstrumentIdOnError;
 
   final HeartbeatUseCase _heartbeatUseCase = HeartbeatUseCase(HeartbeatRepository());
@@ -51,13 +55,17 @@ class _HeartBeatObserver implements Observer<void> {
   }
 }
 
-class _InstrumentIdObserver implements Observer<void> {
+class _InstrumentIdObserver implements Observer<List<InstrumentEntity>> {
   HomePresenter presenter;
 
   _InstrumentIdObserver(this.presenter);
 
   @override
-  void onNext(_) {}
+  void onNext(List<InstrumentEntity> data) {
+    assert(data is List<InstrumentEntity>);
+    assert(presenter.getInstrumentIdOnComplete != null);
+    presenter.getInstrumentIdOnNext(data);
+  }
 
   @override
   void onComplete() {

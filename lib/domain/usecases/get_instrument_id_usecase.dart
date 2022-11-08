@@ -11,12 +11,13 @@ class GetInstrumentIdUsecase extends CompletableUseCase<FoxbitWebSocket> {
   final IInstrumentRepository _repository;
 
   @override
-  Future<Stream<void>> buildUseCaseStream(FoxbitWebSocket params) async {
-    final StreamController<void> controller = StreamController<void>();
+  Future<Stream<List<InstrumentEntity>>> buildUseCaseStream(FoxbitWebSocket params) async {
+    final StreamController<List<InstrumentEntity>> controller =
+        StreamController<List<InstrumentEntity>>();
 
     try {
-      final List<InstrumentEntity> _ = await _repository.getInstrumentId(params);
-
+      final List<InstrumentEntity> instruments = await _repository.getInstrumentId(params);
+      controller.add(instruments);
       controller.close();
     } catch (e) {
       controller.addError(e);

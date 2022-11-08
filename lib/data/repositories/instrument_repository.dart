@@ -6,11 +6,11 @@ import 'package:foxbit_hiring_test_template/domain/repositories/instrument_repos
 
 class InstrumentRepository implements IInstrumentRepository {
   final String _eventName = ConstantsEventsNames.getInstruments;
+  List<InstrumentModel> resultList = [];
 
   @override
-  Future<List<InstrumentModel>> getInstrumentId(FoxbitWebSocket ws) {
+  Future<List<InstrumentModel>> getInstrumentId(FoxbitWebSocket ws) async {
     ws.send(_eventName, {});
-    List<InstrumentModel> resultList = [];
 
     ws.stream.firstWhere((message) {
       final messages = message["o"];
@@ -18,12 +18,13 @@ class InstrumentRepository implements IInstrumentRepository {
 
       if (messagesLength != 0) {
         final mList = messages as List;
+
         final instruments = mList.map((dynamic m) => InstrumentMapper.fromJson(m)).toList();
         resultList = instruments;
       }
-
       return message['n'].toString().toUpperCase() == _eventName && message['i'] == ws.lastId;
     });
+
     return Future.value(resultList);
   }
 }

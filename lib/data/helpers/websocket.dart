@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/subjects.dart';
@@ -47,7 +46,6 @@ class FoxbitWebSocket {
     final Map data = {"m": 0, "i": _id, "n": method, "o": json.encode(objectData)};
 
     _id += _idStepSize;
-    log(json.encode(data));
     return json.encode(data);
   }
 

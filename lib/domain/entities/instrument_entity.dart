@@ -8,4 +8,8 @@ class InstrumentEntity {
     this.symbol,
     this.sortIndex,
   });
+
+  @override
+  String toString() =>
+      'InstrumentEntity(instrumentId: $instrumentId, symbol: $symbol, sortIndex: $sortIndex)';
 }

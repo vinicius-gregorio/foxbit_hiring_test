@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/app/pages/home/home_controller.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
 
 class HomePage extends View {
   @override
@@ -16,18 +17,17 @@ class HomePageState extends ViewState<HomePage, HomeController> {
         appBar: AppBar(
           title: const Text('Home Screen'),
         ),
-        body: ListView(
-          children: [
-            const Text('Home Screen'),
-            // ControlledWidgetBuilder<HomeController>(
-            //     builder: (context, controller) {
-            //       return Text(controller.counter.toString());
-            //     }
-            //   ),
-            ControlledWidgetBuilder<HomeController>(builder: (_, controller) {
-              return Text(controller.presenter.getInstrumentIdOnComplete.toString());
-            }),
-          ],
+        body: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: ControlledWidgetBuilder<HomeController>(builder: (_, controller) {
+            return ListView.builder(
+                itemCount: controller.instruments.length,
+                itemBuilder: (_, index) {
+                  final InstrumentEntity item = controller.instruments[index];
+                  return Text(item.symbol);
+                });
+          }),
         ),
       );
 }

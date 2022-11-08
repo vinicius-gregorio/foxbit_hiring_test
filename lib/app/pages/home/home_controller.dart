@@ -3,10 +3,14 @@ import 'dart:async';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/app/pages/home/home_presenter.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
 
 class HomeController extends Controller {
   final HomePresenter presenter;
   final FoxbitWebSocket ws;
+  List<InstrumentEntity> _instruments = [];
+
+  List<InstrumentEntity> get instruments => _instruments;
 
   HomeController()
       : presenter = HomePresenter(),
@@ -29,6 +33,8 @@ class HomeController extends Controller {
     presenter.heartbeatOnError = heartbeatOnError;
     presenter.getInstrumentIdOnComplete = getInstrumentOnComplete;
     presenter.getInstrumentIdOnError = getInstrumentonError;
+    presenter.getInstrumentIdOnNext =
+        (List<InstrumentEntity> instruments) => _instruments = instruments;
   }
 
   void heartbeatOnComplete() {
@@ -37,6 +43,7 @@ class HomeController extends Controller {
 
   void getInstrumentOnComplete() {
     _scheduleNextInstrumentId();
+    refreshUI();
   }
 
   void heartbeatOnError(dynamic e) {
@@ -68,7 +75,7 @@ class HomeController extends Controller {
   }
 
   void _scheduleNextInstrumentId() {
-    Timer(const Duration(seconds: 15), () {
+    Timer(const Duration(seconds: 5), () {
       presenter.getInstruments(ws);
     });
   }
