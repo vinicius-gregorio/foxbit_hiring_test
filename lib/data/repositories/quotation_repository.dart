@@ -1,20 +1,18 @@
 import 'package:foxbit_hiring_test_template/data/constants.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
-import 'package:foxbit_hiring_test_template/data/mappers/instrument_mapper.dart';
 import 'package:foxbit_hiring_test_template/data/models/instrument_model.dart';
 import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
-import 'package:foxbit_hiring_test_template/domain/repositories/instrument_repository.dart';
-import 'package:foxbit_hiring_test_template/domain/repositories/subscribe_level_repository.dart';
-import 'package:foxbit_hiring_test_template/domain/usecases/get_subscribe_level_usecase.dart';
+import 'package:foxbit_hiring_test_template/domain/repositories/quotation_repository.dart';
+import 'package:foxbit_hiring_test_template/domain/usecases/get_quotation_usecase.dart';
 
-class SubscribeLevelRepository implements ISubscribeLevelRepository {
+class QuotationRepository implements IQuotationRepository {
   final String _eventName = ConstantsEventsNames.subscribeLevel;
   List<InstrumentModel> resultList = [];
 
   @override
-  Future<SubscribeLevelEntity> getSubscribeLevel(
+  Future<SubscribeLevelEntity> getQuotation(
       FoxbitWebSocket ws, GetSubscribeLevelUsecaseParams params) {
-    // TODO: implement getSubscribeLevel
+    // TODO: implement getQuotation
     throw UnimplementedError();
   }
 

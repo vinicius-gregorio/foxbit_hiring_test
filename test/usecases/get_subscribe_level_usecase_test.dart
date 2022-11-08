@@ -1,20 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:foxbit_hiring_test_template/data/repositories/subscribe_level_repository.dart';
+import 'package:foxbit_hiring_test_template/data/repositories/quotation_repository.dart';
 import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
-import 'package:foxbit_hiring_test_template/domain/usecases/get_subscribe_level_usecase.dart';
+import 'package:foxbit_hiring_test_template/domain/usecases/get_quotation_usecase.dart';
 
 import '../connections/test_websocket.dart';
 import '../utils/default_test_observer.dart';
 
 void main() {
   TestFoxbitWebSocket webSocket;
-  GetSubscribeLevelUsecase useCase;
+  GetQuotationUsecase useCase;
   DefaultTestObserver observer;
   GetSubscribeLevelUsecaseParams params = GetSubscribeLevelUsecaseParams('1');
 
   setUp(() {
     webSocket = TestFoxbitWebSocket();
-    useCase = GetSubscribeLevelUsecase(SubscribeLevelRepository(), params);
+    useCase = GetQuotationUsecase(QuotationRepository(), params);
     observer = DefaultTestObserver();
   });
 

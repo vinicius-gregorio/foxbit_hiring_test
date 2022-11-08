@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
 import 'package:foxbit_hiring_test_template/data/repositories/heartbeat_repository.dart';

@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
 import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
-import 'package:foxbit_hiring_test_template/domain/repositories/subscribe_level_repository.dart';
+import 'package:foxbit_hiring_test_template/domain/repositories/quotation_repository.dart';
 
-class GetSubscribeLevelUsecase extends CompletableUseCase<FoxbitWebSocket> {
-  GetSubscribeLevelUsecase(this._repository, this.params);
+class GetQuotationUsecase extends CompletableUseCase<FoxbitWebSocket> {
+  GetQuotationUsecase(this._repository, this.params);
 
-  final ISubscribeLevelRepository _repository;
+  final IQuotationRepository _repository;
   final GetSubscribeLevelUsecaseParams params;
   @override
   Future<Stream<List<InstrumentEntity>>> buildUseCaseStream(FoxbitWebSocket params) async {
@@ -16,7 +16,7 @@ class GetSubscribeLevelUsecase extends CompletableUseCase<FoxbitWebSocket> {
         StreamController<List<InstrumentEntity>>();
 
     // try {
-    //   final List<InstrumentEntity> instruments = await _repository.getInstrumentId(params);
+    //   final List<InstrumentEntity> instruments = await _repository.getSubscribeLevel(params);
     //   controller.add(instruments);
     //   controller.close();
     // } catch (e) {
