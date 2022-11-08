@@ -1,11 +1,9 @@
-
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:websok/io.dart';
-
-import 'package:flutter/foundation.dart';
 
 class FoxbitWebSocket {
   IOWebsok _socket;
@@ -22,14 +20,10 @@ class FoxbitWebSocket {
   FoxbitWebSocket() {
     _socket = IOWebsok(host: 'api.foxbit.com.br?origin=android', tls: true);
   }
-  
+
   void connect() {
     _socket.connect();
-    _socket.listen(
-      onData: onMessage,
-      onDone: _onDone,
-      cancelOnError: false
-    );
+    _socket.listen(onData: onMessage, onDone: _onDone, cancelOnError: false);
     _connectedByUser = true;
     _id = 0;
   }
@@ -49,15 +43,9 @@ class FoxbitWebSocket {
 
   @protected
   String prepareMessage(String method, dynamic objectData) {
-    final Map data = {
-      "m": 0,
-      "i": _id,
-      "n": method,
-      "o": json.encode(objectData)
-    };
+    final Map data = {"m": 0, "i": _id, "n": method, "o": json.encode(objectData)};
 
     _id += _idStepSize;
-
     return json.encode(data);
   }
 
@@ -68,7 +56,7 @@ class FoxbitWebSocket {
     if (data['o'].toString().isNotEmpty) {
       data['o'] = json.decode(data['o'].toString());
     }
-    
+
     streamController.add(data);
   }
 

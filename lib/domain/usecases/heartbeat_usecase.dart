@@ -12,7 +12,7 @@ class HeartbeatUseCase extends CompletableUseCase<FoxbitWebSocket> {
   @override
   Future<Stream<void>> buildUseCaseStream(FoxbitWebSocket params) async {
     final StreamController<void> controller = StreamController<void>();
-    
+
     try {
       final Map _ = await _repository.send(params);
 
