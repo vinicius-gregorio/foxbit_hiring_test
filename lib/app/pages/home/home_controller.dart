@@ -11,8 +11,6 @@ class HomeController extends Controller {
   final HomePresenter presenter;
   final FoxbitWebSocket ws;
   final FoxbitWebSocket quotationWS;
-  // final FoxbitWebSocket ws2;
-  final String a;
   List<InstrumentEntity> _instruments = [];
   List<AssetEntity> _assets = [];
 
@@ -22,7 +20,6 @@ class HomeController extends Controller {
 
   HomeController()
       : presenter = HomePresenter(),
-        a = "a",
         quotationWS = FoxbitWebSocket(),
         ws = FoxbitWebSocket() {
     ws.connect();
@@ -50,12 +47,18 @@ class HomeController extends Controller {
 
     presenter.getInstrumentIdOnComplete = getInstrumentOnComplete;
     presenter.getInstrumentIdOnError = getInstrumentonError;
-    presenter.getInstrumentIdOnNext =
-        (List<InstrumentEntity> instruments) => _instruments = instruments;
+    presenter.getInstrumentIdOnNext = (List<InstrumentEntity> instruments) {
+      print(_assets.length);
+      return _instruments = instruments;
+    };
 
     presenter.getQuotationsOnComplete = getQuotationOnComplete;
     presenter.getQuotationsOnError = getQuotationOnError;
-    presenter.getQuotationsOnNext = (List<AssetEntity> assets) => _assets = assets;
+    presenter.getQuotationsOnNext = (List<AssetEntity> assets) {
+      print("XXX" + _assets.length.toString());
+
+      return _assets = assets;
+    };
   }
 
   void heartbeatOnComplete() {

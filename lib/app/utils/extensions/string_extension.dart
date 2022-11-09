@@ -14,4 +14,19 @@ extension StringExtension on String {
     final formatted = formatter.format(double.parse(this));
     return formatted;
   }
+
+  String formatQuotationValue() {
+    const int decimalDigits = 2;
+    const String symbol = '';
+    final formatter = NumberFormat.simpleCurrency(
+      decimalDigits: decimalDigits,
+      name: symbol,
+    );
+    double value = double.parse(this);
+    String formatted = formatter.format(value);
+    if (value > 0) {
+      formatted = '+ $formatted';
+    }
+    return formatted;
+  }
 }

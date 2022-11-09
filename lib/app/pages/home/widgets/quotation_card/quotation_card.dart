@@ -24,7 +24,7 @@ class QuotationCard extends StatelessWidget {
           children: [
             Text(asset.symbol),
             Text(
-              asset.rolling24HrPxChange,
+              asset.rolling24HrPxChange.formatQuotationValue(),
               style: asset.rolling24HrPxChange.startsWith('-')
                   ? AppTextStyles.rollingPxChangeNegative
                   : AppTextStyles.rollingPxChangePositive,
