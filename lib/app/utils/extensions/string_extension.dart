@@ -22,10 +22,15 @@ extension StringExtension on String {
       decimalDigits: decimalDigits,
       name: symbol,
     );
-    double value = double.parse(this);
+    final double value = double.parse(this);
     String formatted = formatter.format(value);
+    if (formatted.startsWith("-")) {
+      formatted = formatted.replaceFirst("-", "");
+    }
     if (value > 0) {
       formatted = '+ $formatted';
+    } else {
+      formatted = '- $formatted';
     }
     return formatted;
   }

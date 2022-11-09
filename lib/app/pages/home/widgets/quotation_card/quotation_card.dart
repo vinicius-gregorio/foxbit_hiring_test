@@ -23,7 +23,6 @@ class QuotationCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Text(asset.symbol.formatSymbol()),
             AssetInfoQuotationCard(asset: asset),
             Text(
               asset.rolling24HrPxChange.formatQuotationValue(),
