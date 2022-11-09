@@ -2,33 +2,35 @@ import 'dart:async';
 
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
-import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
 import 'package:foxbit_hiring_test_template/domain/repositories/quotation_repository.dart';
 
-class GetQuotationUsecase extends CompletableUseCase<FoxbitWebSocket> {
-  GetQuotationUsecase(this._repository, this.params);
+class GetQuotationUsecase extends CompletableUseCase<GetQuotationUsecaseParams> {
+  GetQuotationUsecase(
+    this._repository,
+  );
 
   final IQuotationRepository _repository;
-  final GetSubscribeLevelUsecaseParams params;
+
   @override
-  Future<Stream<List<InstrumentEntity>>> buildUseCaseStream(FoxbitWebSocket params) async {
-    final StreamController<List<InstrumentEntity>> controller =
-        StreamController<List<InstrumentEntity>>();
+  Future<Stream<List<AssetEntity>>> buildUseCaseStream(GetQuotationUsecaseParams params) async {
+    final StreamController<List<AssetEntity>> controller = StreamController<List<AssetEntity>>();
 
-    // try {
-    //   final List<InstrumentEntity> instruments = await _repository.getSubscribeLevel(params);
-    //   controller.add(instruments);
-    //   controller.close();
-    // } catch (e) {
-    //   controller.addError(e);
-    // }
+    try {
+      final List<AssetEntity> assets = await _repository.getQuotations(params);
+      controller.add(assets);
+      controller.close();
+    } catch (e) {
+      controller.addError(e);
+    }
 
-    // return controller.stream;
+    return controller.stream;
   }
 }
 
-class GetSubscribeLevelUsecaseParams {
-  final String instrumentId;
+class GetQuotationUsecaseParams {
+  final List<String> instrumentsIds;
+  final FoxbitWebSocket ws;
 
-  GetSubscribeLevelUsecaseParams(this.instrumentId);
+  GetQuotationUsecaseParams(this.instrumentsIds, this.ws);
 }
