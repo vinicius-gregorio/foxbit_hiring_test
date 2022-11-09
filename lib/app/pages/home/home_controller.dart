@@ -48,15 +48,12 @@ class HomeController extends Controller {
     presenter.getInstrumentIdOnComplete = getInstrumentOnComplete;
     presenter.getInstrumentIdOnError = getInstrumentonError;
     presenter.getInstrumentIdOnNext = (List<InstrumentEntity> instruments) {
-      print(_assets.length);
       return _instruments = instruments;
     };
 
     presenter.getQuotationsOnComplete = getQuotationOnComplete;
     presenter.getQuotationsOnError = getQuotationOnError;
     presenter.getQuotationsOnNext = (List<AssetEntity> assets) {
-      print("XXX" + _assets.length.toString());
-
       return _assets = assets;
     };
   }

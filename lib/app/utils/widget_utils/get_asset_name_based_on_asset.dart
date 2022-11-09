@@ -1,5 +1,5 @@
-import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
 import 'package:foxbit_hiring_test_template/app/utils/extensions/string_extension.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
 
 String getAssetNameBasedOnInstrumentId(AssetEntity asset) {
   switch (asset.instrumentId) {

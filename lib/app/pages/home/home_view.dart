@@ -4,7 +4,6 @@ import 'package:foxbit_hiring_test_template/app/pages/home/home_controller.dart'
 import 'package:foxbit_hiring_test_template/app/pages/home/widgets/quotation_card/quotation_card.dart';
 import 'package:foxbit_hiring_test_template/app/ui/base/app_colors.dart';
 import 'package:foxbit_hiring_test_template/app/ui/base/app_text_styles.dart';
-import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
 import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
 
 class HomePage extends View {
@@ -43,7 +42,6 @@ class HomePageState extends ViewState<HomePage, HomeController> {
                   return ListView.builder(
                       itemCount: controller.assets.length,
                       itemBuilder: (_, index) {
-                        final InstrumentEntity item = controller.instruments[index];
                         final AssetEntity asset = controller.assets[index];
                         return QuotationCard(asset: asset);
                       });

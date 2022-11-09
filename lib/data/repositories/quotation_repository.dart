@@ -12,14 +12,13 @@ class QuotationRepository implements IQuotationRepository {
 
   @override
   Future<List<AssetEntity>> getQuotations(GetQuotationUsecaseParams params) async {
-    print("getQuotations usecase");
-
     for (final instrument in params.instrumentsIds) {
       await Future.delayed(const Duration(milliseconds: 500));
       params.ws.send(_eventName, {"InstrumentId": instrument.instrumentId});
       params.ws.stream.firstWhere((element) {
         final message = element["o"];
         log(message.toString());
+        // ignore: prefer_final_locals
         AssetEntity data = AssetMapper.fromJson(message as Map<String, dynamic>);
         data.symbol = instrument.symbol;
         data.instrumentId = instrument.instrumentId;
@@ -36,7 +35,6 @@ class QuotationRepository implements IQuotationRepository {
             element['i'] == params.ws.lastId;
       });
     }
-    print(resultList.length);
 
     return Future.value(resultList);
   }
