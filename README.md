@@ -76,7 +76,7 @@ Campos a serem utilizados:
 
 ```Rolling24HrVolume```: Volume negociado nas últimas 24 horas
 
-```Rolling24HrPxChange```: Variaçnao de preço nas últimas 24 horas
+```Rolling24HrPxChange```: Variação de preço nas últimas 24 horas
 
 Exemplo de retorno
 ```Javascript
@@ -90,7 +90,7 @@ Exemplo de retorno
 
 # Informações adicionais
 
-- Apesar de poder ser seguida a ordem presente no GetInstruments, os vinculos entre moedas e cotações é:
+- Apesar de poder ser seguida a ordem presente no GetInstruments, os vínculos entre moedas e cotações é:
     - ```Bitcoin```: InstrumentId ```1```
     - ```XRP```: InstrumentId ```10```
     - ```TrueUSD```: InstrumentId ```6```

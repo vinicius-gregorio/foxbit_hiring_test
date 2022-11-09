@@ -20,6 +20,7 @@ class DefaultTestObserver implements Observer<dynamic> {
 
   @override
   void onError(dynamic e) {
+    print(e);
     exception = e as Exception;
     done = false;
     error = true;
