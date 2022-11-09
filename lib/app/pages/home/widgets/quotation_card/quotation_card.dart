@@ -14,7 +14,7 @@ class QuotationCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 70,
       margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -30,7 +30,10 @@ class QuotationCard extends StatelessWidget {
                   ? AppTextStyles.rollingPxChangeNegative
                   : AppTextStyles.rollingPxChangePositive,
             ),
-            Text(asset.rolling24HrVolume.formatToBrl()),
+            Text(
+              asset.rolling24HrVolume.formatToBrl(),
+              style: AppTextStyles.rollingVolume,
+            ),
           ],
         ),
       ),

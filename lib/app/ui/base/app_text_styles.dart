@@ -19,10 +19,20 @@ class AppTextStyles {
     color: AppColors.textColor,
   );
 
-  // create symbol text style with less font weight
   static const TextStyle symbol = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: AppColors.textColorFaded,
+  );
+
+  static const TextStyle assetName = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textColor,
+  );
+  static const TextStyle rollingVolume = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textColor,
   );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foxbit_hiring_test_template/app/ui/base/app_text_styles.dart';
 import 'package:foxbit_hiring_test_template/app/utils/extensions/string_extension.dart';
 import 'package:foxbit_hiring_test_template/app/utils/widget_utils/get_asset_name_based_on_asset.dart';
 import 'package:foxbit_hiring_test_template/app/utils/widget_utils/get_image_path_based_instrument_id.dart';
@@ -31,8 +32,14 @@ class AssetInfoQuotationCard extends StatelessWidget {
             crossAxisAlignment:
                 checkDuplicityAssetName ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             children: [
-              Text(assetName),
-              Text(symbol),
+              Text(
+                assetName,
+                style: AppTextStyles.assetName,
+              ),
+              Text(
+                symbol,
+                style: AppTextStyles.symbol,
+              ),
             ],
           )
         ],
