@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:foxbit_hiring_test_template/data/helpers/websocket.dart';
-import 'package:foxbit_hiring_test_template/domain/entities/instrument_entity.dart';
 import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
-import 'package:foxbit_hiring_test_template/domain/repositories/quotation_repository.dart';
 
-class GetQuotationUsecase extends CompletableUseCase<GetQuotationUsecaseParams> {
+import '../repositories/quotation_repository_copy.dart';
+
+class GetQuotationUsecase extends CompletableUseCase<GetQuotationUsecaseParamsz> {
   GetQuotationUsecase(
     this._repository,
   );
@@ -14,7 +14,7 @@ class GetQuotationUsecase extends CompletableUseCase<GetQuotationUsecaseParams> 
   final IQuotationRepository _repository;
 
   @override
-  Future<Stream<List<AssetEntity>>> buildUseCaseStream(GetQuotationUsecaseParams params) async {
+  Future<Stream<List<AssetEntity>>> buildUseCaseStream(GetQuotationUsecaseParamsz params) async {
     final StreamController<List<AssetEntity>> controller = StreamController<List<AssetEntity>>();
 
     try {
@@ -29,9 +29,9 @@ class GetQuotationUsecase extends CompletableUseCase<GetQuotationUsecaseParams> 
   }
 }
 
-class GetQuotationUsecaseParams {
-  final List<InstrumentEntity> instrumentsIds;
+class GetQuotationUsecaseParamsz {
+  final String instrumentId;
   final FoxbitWebSocket ws;
 
-  GetQuotationUsecaseParams(this.instrumentsIds, this.ws);
+  GetQuotationUsecaseParamsz(this.instrumentId, this.ws);
 }

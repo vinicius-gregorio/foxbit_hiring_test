@@ -29,7 +29,7 @@ class HomeController extends Controller {
     quotationWS.connect();
     presenter.sendHeartbeat(ws);
     presenter.getInstruments(ws);
-    presenter.getQuotations(GetQuotationUsecaseParams(instrumentsIds, quotationWS));
+    presenter.getQuotations(GetQuotationUsecaseParams(_instruments, quotationWS));
   }
 
   //create homeController constructor
@@ -112,14 +112,14 @@ class HomeController extends Controller {
   }
 
   void _scheduleNextInstrumentId() {
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 10), () {
       presenter.getInstruments(ws);
     });
   }
 
   void _scheduleNextQuotation() {
-    Timer(const Duration(seconds: 5), () {
-      presenter.getQuotations(GetQuotationUsecaseParams(instrumentsIds, ws));
+    Timer(const Duration(seconds: 30), () {
+      presenter.getQuotations(GetQuotationUsecaseParams(_instruments, ws));
     });
   }
 }

@@ -10,6 +10,8 @@ class InstrumentRepository implements IInstrumentRepository {
 
   @override
   Future<List<InstrumentModel>> getInstrumentId(FoxbitWebSocket ws) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
     ws.send(_eventName, {});
     ws.stream.firstWhere((message) {
       final messages = message["o"];
