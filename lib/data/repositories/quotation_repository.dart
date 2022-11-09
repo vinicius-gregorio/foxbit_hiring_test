@@ -22,12 +22,12 @@ class QuotationRepository implements IQuotationRepository {
         log(message.toString());
         AssetEntity data = AssetMapper.fromJson(message as Map<String, dynamic>);
         data.symbol = instrument.symbol;
+        data.instrumentId = instrument.instrumentId;
         for (int i = 0; i < resultList.length; i++) {
           final item = resultList[i];
           if (item.symbol == data.symbol) {
             resultList.removeAt(i);
           }
-          print("equal");
         }
         if (!resultList.contains(data)) {
           resultList.add(data);

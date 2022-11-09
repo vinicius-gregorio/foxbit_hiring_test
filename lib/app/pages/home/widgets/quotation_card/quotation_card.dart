@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foxbit_hiring_test_template/app/pages/home/widgets/quotation_card/widgets/asset_info_quotation_card.dart';
 import 'package:foxbit_hiring_test_template/app/ui/base/app_text_styles.dart';
-import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
 import 'package:foxbit_hiring_test_template/app/utils/extensions/string_extension.dart';
+import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
 
 class QuotationCard extends StatelessWidget {
   final AssetEntity asset;
@@ -22,7 +23,8 @@ class QuotationCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(asset.symbol),
+            // Text(asset.symbol.formatSymbol()),
+            AssetInfoQuotationCard(asset: asset),
             Text(
               asset.rolling24HrPxChange.formatQuotationValue(),
               style: asset.rolling24HrPxChange.startsWith('-')

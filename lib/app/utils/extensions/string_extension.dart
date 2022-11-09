@@ -29,4 +29,10 @@ extension StringExtension on String {
     }
     return formatted;
   }
+
+  String formatSymbol() {
+    final RegExp removeCharctersAfterSpaceBar = RegExp('/.*');
+    final String value = this;
+    return value.replaceAll(removeCharctersAfterSpaceBar, '');
+  }
 }
