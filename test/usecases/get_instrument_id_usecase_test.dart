@@ -54,5 +54,14 @@ void main() {
     final result = observer.data as List<InstrumentEntity>;
     expect(result, isA<List<InstrumentEntity>>());
   });
+
+  test('Validate correct execution with empty ws', () async {
+    useCase.execute(observer, TestFoxbitWebSocket());
+    while (!observer.ended) {
+      await Future<dynamic>.delayed(const Duration(milliseconds: 10));
+    }
+
+    expect(observer.done, true);
+    expect(observer.error, false);
+  });
 }
-//test
