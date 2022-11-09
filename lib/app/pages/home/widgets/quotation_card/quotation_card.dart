@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foxbit_hiring_test_template/app/ui/base/app_colors.dart';
 import 'package:foxbit_hiring_test_template/app/ui/base/app_text_styles.dart';
 import 'package:foxbit_hiring_test_template/domain/entities/subscribe_level_entity.dart';
+import 'package:foxbit_hiring_test_template/app/utils/extensions/string_extension.dart';
 
 class QuotationCard extends StatelessWidget {
   final AssetEntity asset;
@@ -29,7 +29,7 @@ class QuotationCard extends StatelessWidget {
                   ? AppTextStyles.rollingPxChangeNegative
                   : AppTextStyles.rollingPxChangePositive,
             ),
-            Text(asset.rolling24HrVolume),
+            Text(asset.rolling24HrVolume.formatToBrl()),
           ],
         ),
       ),

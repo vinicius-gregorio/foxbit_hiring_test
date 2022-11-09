@@ -14,6 +14,7 @@ dependencies:
   flutter_clean_architecture: ^4.1.1
   rxdart: ^0.25.0
   websok: ^2.1.2
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
